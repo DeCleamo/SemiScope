@@ -33,241 +33,240 @@ st.set_page_config(
 # Custom CSS for high-end aesthetic
 st.markdown("""
 <style>
-    /* Global Aesthetic Design System - Dark Scientific Command Center */
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    /* Professional Scientific Theme - Clean Off-White with Navy & Muted Teal */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
     
     html, body, [class*="css"] {
-        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        color: #0f172a;
     }
     
     code, pre, .mono {
         font-family: 'JetBrains Mono', monospace !important;
     }
 
-    /* Streamlit Main Viewport Styling */
+    /* App container styling */
     .stApp {
-        background: radial-gradient(circle at 15% 10%, rgba(30, 27, 75, 0.45) 0%, rgba(11, 15, 25, 0.98) 60%),
-                    radial-gradient(circle at 85% 85%, rgba(15, 23, 42, 0.6) 0%, rgba(11, 15, 25, 1) 70%);
-        color: #f1f5f9;
+        background-color: #f8fafc;
+        color: #0f172a;
     }
 
-    /* Hero Header */
-    .main-header {
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 27, 75, 0.7) 50%, rgba(49, 46, 129, 0.5) 100%);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        padding: 2.2rem 2.5rem;
-        border-radius: 20px;
-        color: #f8fafc;
-        margin-bottom: 2rem;
-        box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-        border: 1px solid rgba(99, 102, 241, 0.25);
-        position: relative;
-        overflow: hidden;
+    /* Header styling - Compact, restrained, clear */
+    .header-container {
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .header-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0;
+        letter-spacing: -0.02em;
+    }
+    
+    .header-subtitle {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #0f766e;
+        margin: 0.15rem 0 0.35rem 0;
+    }
+    
+    .header-desc {
+        font-size: 0.88rem;
+        color: #475569;
+        margin: 0;
+        line-height: 1.5;
     }
 
-    .main-header::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, #6366f1, #06b6d4, #10b981);
+    .meta-tag {
+        display: inline-block;
+        padding: 0.2rem 0.55rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        background-color: #f1f5f9;
+        color: #334155;
+        border: 1px solid #cbd5e1;
+        margin-right: 0.4rem;
+        margin-top: 0.5rem;
     }
-    
-    .main-header h1 {
-        font-size: 2.5rem;
-        font-weight: 800;
-        margin-bottom: 0.4rem;
-        letter-spacing: -0.03em;
-        background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+
+    /* Professional clean content cards */
+    .card {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 1.2rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
     }
-    
-    .main-header p {
-        font-size: 1.02rem;
-        color: #94a3b8;
-        max-width: 860px;
-        line-height: 1.6;
-        margin-bottom: 0;
+
+    .app-matrix-card {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 1.2rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
     }
-    
-    .stat-badge {
-        display: inline-flex;
+
+    .app-title {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: #0f172a;
+        display: flex;
         align-items: center;
         gap: 0.4rem;
-        padding: 0.4rem 0.85rem;
-        border-radius: 9999px;
-        font-size: 0.78rem;
-        font-weight: 600;
-        margin-right: 0.5rem;
-        margin-top: 0.85rem;
-        background: rgba(30, 41, 59, 0.8);
-        color: #c7d2fe;
-        border: 1px solid rgba(99, 102, 241, 0.35);
-        backdrop-filter: blur(8px);
-    }
-    
-    /* Modern Glassmorphic Cards */
-    .card {
-        background: rgba(17, 24, 39, 0.75);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        padding: 1.5rem;
-        margin-bottom: 1.3rem;
-        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04);
-        transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    
-    .card:hover {
-        transform: translateY(-2px);
-        border-color: rgba(99, 102, 241, 0.4);
-        box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.6), 0 0 20px -5px rgba(99, 102, 241, 0.2);
     }
 
-    /* Application Suitability Matrix Cards */
-    .app-matrix-card {
-        background: linear-gradient(145deg, rgba(17, 24, 39, 0.85) 0%, rgba(30, 27, 75, 0.35) 100%);
-        border: 1px solid rgba(99, 102, 241, 0.25);
-        border-radius: 16px;
-        padding: 1.5rem;
-        margin-bottom: 1.4rem;
-        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
-        transition: all 0.2s ease;
+    .app-subtitle {
+        font-size: 0.82rem;
+        color: #64748b;
+        margin-top: 0.15rem;
     }
 
-    .app-matrix-card:hover {
-        border-color: rgba(99, 102, 241, 0.5);
-        box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.55), 0 0 20px rgba(99, 102, 241, 0.15);
-    }
-
-    /* Badges & Tags */
+    /* Tags & Badges - Restrained and scientifically credible */
     .tag-measured {
-        background: rgba(16, 185, 129, 0.15);
-        color: #34d399;
-        padding: 4px 11px;
-        border-radius: 9999px;
+        background: #f0fdf4;
+        color: #166534;
+        padding: 2px 8px;
+        border-radius: 4px;
         font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        border: 1px solid rgba(16, 185, 129, 0.35);
+        font-weight: 600;
+        border: 1px solid #bbf7d0;
         display: inline-block;
     }
     
     .tag-predicted {
-        background: rgba(139, 92, 246, 0.18);
-        color: #c4b5fd;
-        padding: 4px 11px;
-        border-radius: 9999px;
+        background: #f8fafc;
+        color: #334155;
+        padding: 2px 8px;
+        border-radius: 4px;
         font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        border: 1px solid rgba(139, 92, 246, 0.35);
+        font-weight: 600;
+        border: 1px solid #cbd5e1;
         display: inline-block;
     }
 
     .tag-xgboost {
-        background: rgba(6, 182, 212, 0.18);
-        color: #67e8f9;
-        padding: 4px 11px;
-        border-radius: 9999px;
+        background: #f0fdfa;
+        color: #0f766e;
+        padding: 2px 8px;
+        border-radius: 4px;
         font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        border: 1px solid rgba(6, 182, 212, 0.35);
+        font-weight: 600;
+        border: 1px solid #99f6e4;
         display: inline-block;
     }
-    
+
     .evidence-strong {
-        background: rgba(59, 130, 246, 0.18);
-        color: #93c5fd;
-        padding: 4px 10px;
-        border-radius: 6px;
+        background: #f8fafc;
+        color: #1e293b;
+        padding: 2px 7px;
+        border-radius: 4px;
         font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.03em;
-        border: 1px solid rgba(59, 130, 246, 0.3);
+        font-weight: 600;
+        border: 1px solid #cbd5e1;
     }
-    
+
     .evidence-heuristic {
-        background: rgba(245, 158, 11, 0.18);
-        color: #fcd34d;
-        padding: 4px 10px;
-        border-radius: 6px;
+        background: #fffbeb;
+        color: #92400e;
+        padding: 2px 7px;
+        border-radius: 4px;
         font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.03em;
-        border: 1px solid rgba(245, 158, 11, 0.3);
+        font-weight: 600;
+        border: 1px solid #fde68a;
     }
-    
+
     .evidence-weak {
-        background: rgba(100, 116, 139, 0.2);
-        color: #cbd5e1;
-        padding: 4px 10px;
-        border-radius: 6px;
+        background: #f8fafc;
+        color: #64748b;
+        padding: 2px 7px;
+        border-radius: 4px;
         font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.03em;
-        border: 1px solid rgba(100, 116, 139, 0.3);
+        font-weight: 600;
+        border: 1px solid #e2e8f0;
     }
-    
+
     .badge-tied {
-        background: rgba(245, 158, 11, 0.18);
-        color: #fcd34d;
-        border: 1px solid rgba(245, 158, 11, 0.35);
-        padding: 3px 9px;
-        border-radius: 6px;
+        background: #fffbeb;
+        color: #92400e;
+        border: 1px solid #fde68a;
+        padding: 2px 7px;
+        border-radius: 4px;
         font-size: 0.72rem;
-        font-weight: 700;
+        font-weight: 600;
         margin-left: 0.4rem;
     }
 
     .badge-unique {
-        background: rgba(16, 185, 129, 0.15);
-        color: #6ee7b7;
-        border: 1px solid rgba(16, 185, 129, 0.35);
-        padding: 3px 9px;
-        border-radius: 6px;
+        background: #f0fdf4;
+        color: #166534;
+        border: 1px solid #bbf7d0;
+        padding: 2px 7px;
+        border-radius: 4px;
         font-size: 0.72rem;
-        font-weight: 700;
+        font-weight: 600;
         margin-left: 0.4rem;
     }
-    
-    .metric-bubble {
-        background: rgba(30, 41, 59, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 10px;
-        padding: 0.6rem 0.9rem;
-        margin-right: 0.5rem;
-        display: inline-block;
-        font-size: 0.85rem;
-        color: #cbd5e1;
+
+    /* Model score boxes */
+    .model-score-box {
+        background: #f8fafc;
+        border-radius: 6px;
+        padding: 0.8rem 1rem;
+        border: 1px solid #e2e8f0;
     }
 
+    .model-score-box.rf {
+        border-left: 3px solid #334155;
+    }
+
+    .model-score-box.xgb {
+        border-left: 3px solid #0f766e;
+    }
+
+    /* Explanation callouts */
     .expl-box {
-        background: rgba(15, 23, 42, 0.7);
-        border-radius: 12px;
-        padding: 1.1rem 1.3rem;
-        border-left: 4px solid #6366f1;
-        font-size: 0.92rem;
-        line-height: 1.65;
-        color: #e2e8f0;
-        margin-top: 0.8rem;
+        background: #f8fafc;
+        border-radius: 6px;
+        padding: 0.85rem 1rem;
+        border-left: 3px solid #334155;
+        font-size: 0.88rem;
+        line-height: 1.55;
+        color: #334155;
+        margin-top: 0.75rem;
     }
 
     .expl-box-xgb {
-        background: rgba(6, 182, 212, 0.08);
-        border-radius: 12px;
-        padding: 1.1rem 1.3rem;
-        border-left: 4px solid #06b6d4;
-        font-size: 0.92rem;
-        line-height: 1.65;
-        color: #e0f2fe;
-        margin-top: 0.8rem;
+        background: #f0fdfa;
+        border-radius: 6px;
+        padding: 0.85rem 1rem;
+        border-left: 3px solid #0f766e;
+        font-size: 0.88rem;
+        line-height: 1.55;
+        color: #115e59;
+        margin-top: 0.75rem;
+    }
+
+    /* Primary button prominence */
+    .stButton > button {
+        background-color: #0f766e !important;
+        color: #ffffff !important;
+        font-weight: 600 !important;
+        border: none !important;
+        border-radius: 6px !important;
+        padding: 0.5rem 1.25rem !important;
+        transition: background-color 0.15s ease !important;
+    }
+
+    .stButton > button:hover {
+        background-color: #115e59 !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -666,24 +665,24 @@ else:
                                 rf_std_val = first_res["properties"]["bandgap"]["std"]
 
                                 st.markdown(f"""
-                                <div style="background: linear-gradient(135deg, rgba(30, 27, 75, 0.4) 0%, rgba(49, 46, 129, 0.2) 100%); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem;">
-                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                                        <h4 style="margin: 0; font-size: 1.15rem; font-weight: 600; color: #e0e7ff;">⚡ Parallel Model Diagnostic: XGBoost 5-Fold vs. Production Random Forest</h4>
-                                        <span style="background: rgba(99, 102, 241, 0.25); color: #c7d2fe; border: 1px solid rgba(99, 102, 241, 0.4); padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">PARALLEL ENSEMBLE</span>
+                                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                                        <h4 style="margin: 0; font-size: 1.05rem; font-weight: 600; color: #0f172a;">Model Band-Gap Comparison: Production Random Forest vs. Auxiliary XGBoost</h4>
+                                        <span class="tag-predicted">ENSEMBLE COMPARISON</span>
                                     </div>
-                                    <p style="margin: 0 0 1rem 0; font-size: 0.88rem; color: #94a3b8;">
-                                        Real-time comparison between the production 100-tree Random Forest and the auxiliary 5-fold cross-validated XGBoost gradient boosted ensemble across the identical 132 Magpie descriptors.
+                                    <p style="margin: 0 0 0.85rem 0; font-size: 0.85rem; color: #64748b;">
+                                        Side-by-side evaluation of the 100-tree Random Forest regressor and 5-fold cross-validated XGBoost gradient booster across identical 132 Magpie elemental features.
                                     </p>
-                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-                                        <div style="background: rgba(15, 23, 42, 0.6); padding: 0.85rem 1rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05);">
-                                            <span style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; font-weight: 600;">Production Random Forest</span>
-                                            <div style="font-size: 1.4rem; font-weight: 700; color: #f8fafc; margin-top: 0.2rem;">{rf_pred_val:.2f} eV <span style="font-size: 0.8rem; color: #94a3b8;">[{rf_tag}]</span></div>
-                                            <span style="font-size: 0.78rem; color: #64748b;">Ensemble spread: ±{rf_std_val:.2f} eV</span>
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                        <div style="background: #f8fafc; padding: 0.85rem 1rem; border-radius: 6px; border: 1px solid #e2e8f0; border-left: 3px solid #334155;">
+                                            <div style="font-size: 0.75rem; color: #64748b; font-weight: 600; text-transform: uppercase;">Production Random Forest</div>
+                                            <div style="font-size: 1.5rem; font-weight: 700; color: #0f172a; margin-top: 0.15rem;">{rf_pred_val:.2f} eV <span style="font-size: 0.8rem; color: #64748b; font-weight: 500;">[{rf_tag}]</span></div>
+                                            <div style="font-size: 0.76rem; color: #64748b; margin-top: 0.2rem;">Ensemble tree dispersion: ±{rf_std_val:.2f} eV (not a confidence interval)</div>
                                         </div>
-                                        <div style="background: rgba(15, 23, 42, 0.6); padding: 0.85rem 1rem; border-radius: 8px; border: 1px solid rgba(99, 102, 241, 0.3);">
-                                            <span style="font-size: 0.75rem; color: #a5b4fc; text-transform: uppercase; font-weight: 600;">Auxiliary XGBoost Ensemble</span>
-                                            <div style="font-size: 1.4rem; font-weight: 700; color: #818cf8; margin-top: 0.2rem;">{xgb_mean:.2f} eV <span style="font-size: 0.8rem; color: #c7d2fe;">[predicted]</span></div>
-                                            <span style="font-size: 0.78rem; color: #a5b4fc;">Ensemble spread: ±{xgb_std:.2f} eV (5 folds)</span>
+                                        <div style="background: #f0fdfa; padding: 0.85rem 1rem; border-radius: 6px; border: 1px solid #ccfbf1; border-left: 3px solid #0f766e;">
+                                            <div style="font-size: 0.75rem; color: #0f766e; font-weight: 600; text-transform: uppercase;">Auxiliary XGBoost Ensemble</div>
+                                            <div style="font-size: 1.5rem; font-weight: 700; color: #0f766e; margin-top: 0.15rem;">{xgb_mean:.2f} eV <span style="font-size: 0.8rem; color: #0d9488; font-weight: 500;">[predicted]</span></div>
+                                            <div style="font-size: 0.76rem; color: #0f766e; margin-top: 0.2rem;">5-fold spread: ±{xgb_std:.2f} eV</div>
                                         </div>
                                     </div>
                                 </div>
@@ -715,14 +714,14 @@ else:
                                         textposition="auto"
                                     ))
                                     fig_comp.update_layout(
-                                        template="plotly_dark",
-                                        title=dict(text="<b>Band Gap & Ensemble Spread</b>", font=dict(size=13, color="#e2e8f0")),
+                                        template="plotly_white",
+                                        title=dict(text="<b>Band Gap & Ensemble Spread</b>", font=dict(size=13, color="#0f172a")),
                                         yaxis_title="Band Gap (eV)",
                                         showlegend=False,
                                         margin=dict(l=30, r=20, t=40, b=30),
                                         height=290,
-                                        paper_bgcolor="rgba(15, 23, 42, 0.4)",
-                                        plot_bgcolor="rgba(15, 23, 42, 0.2)"
+                                        paper_bgcolor="#ffffff",
+                                        plot_bgcolor="#0f172a"
                                     )
                                     st.plotly_chart(fig_comp, use_container_width=True)
 
@@ -763,13 +762,13 @@ else:
                                         textposition="auto"
                                     ))
                                     fig_shap.update_layout(
-                                        template="plotly_dark",
-                                        title=dict(text="<b>XGBoost SHAP Feature Impacts</b>", font=dict(size=13, color="#e2e8f0")),
+                                        template="plotly_white",
+                                        title=dict(text="<b>XGBoost SHAP Feature Impacts</b>", font=dict(size=13, color="#0f172a")),
                                         xaxis_title="SHAP Impact on Eg (eV)",
                                         margin=dict(l=30, r=20, t=40, b=30),
                                         height=290,
-                                        paper_bgcolor="rgba(15, 23, 42, 0.4)",
-                                        plot_bgcolor="rgba(15, 23, 42, 0.2)"
+                                        paper_bgcolor="#ffffff",
+                                        plot_bgcolor="#0f172a"
                                     )
                                     st.plotly_chart(fig_shap, use_container_width=True)
 
@@ -897,10 +896,10 @@ else:
                         ))
 
                         fig_usability.update_layout(
-                            template="plotly_dark",
+                            template="plotly_white",
                             title=dict(
                                 text="<b>Application Suitability Desirability: RF vs. XGBoost</b>",
-                                font=dict(size=13, color="#f8fafc")
+                                font=dict(size=13, color="#0f172a")
                             ),
                             barmode='group',
                             yaxis=dict(title="Desirability (0.00 – 1.00)", range=[0, 1.05], gridcolor='rgba(255,255,255,0.06)'),
@@ -915,8 +914,8 @@ else:
                             ),
                             margin=dict(l=40, r=20, t=55, b=40),
                             height=310,
-                            paper_bgcolor="rgba(15, 23, 42, 0.6)",
-                            plot_bgcolor="rgba(15, 23, 42, 0.2)"
+                            paper_bgcolor="#ffffff",
+                            plot_bgcolor="#0f172a"
                         )
                         st.plotly_chart(fig_usability, use_container_width=True)
 
@@ -949,10 +948,10 @@ else:
                         ))
 
                         fig_radar.update_layout(
-                            template="plotly_dark",
+                            template="plotly_white",
                             title=dict(
                                 text="<b>Multi-Domain Usability Profile</b>",
-                                font=dict(size=13, color="#f8fafc")
+                                font=dict(size=13, color="#0f172a")
                             ),
                             polar=dict(
                                 radialaxis=dict(visible=True, range=[0, 1.0], gridcolor='rgba(255,255,255,0.1)', tickfont=dict(size=9)),
@@ -969,8 +968,8 @@ else:
                             ),
                             margin=dict(l=40, r=40, t=55, b=40),
                             height=310,
-                            paper_bgcolor="rgba(15, 23, 42, 0.6)",
-                            plot_bgcolor="rgba(15, 23, 42, 0.2)"
+                            paper_bgcolor="#ffffff",
+                            plot_bgcolor="#0f172a"
                         )
                         st.plotly_chart(fig_radar, use_container_width=True)
 
