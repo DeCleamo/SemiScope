@@ -1,0 +1,20 @@
+{
+  "phase": "Phase 2C: External Band-Gap Benchmark Curation and Evidence Verification",
+  "manifest_date": "2026-10-19",
+  "benchmark_version": "1.0.0",
+  "benchmark_dataset_file": "reference_benchmark.csv",
+  "benchmark_record_count": 54,
+  "excluded_record_count": 12,
+  "total_audited_candidates": 66,
+  "production_model_frozen_hash_sha256": "44e961abfe07a9a11a9b895430cdf3943fa53caef8408a201cf883c7b95cdaaf",
+  "production_metadata_frozen_hash_sha256": "0e265628b740713339bc32cf9826b0235f48a5fe133e69724806efba38ea32b0",
+  "magpie_features_frozen_hash_sha256": "3c6c36e7696df28f266290de860394b3cefb96001ea27672be94cb4f57101195",
+  "training_data_frozen_hash_sha256": "9d0b44f68a867ae8e55a38828390cd80e16ddbb884a483682dda1078df09ceb5",
+  "file_hashes_sha256": {
+    "reference_benchmark.csv": "b404a4c5861fe4e4b810e7b3bddc24765d6655bc65ca0e9a906b82f599b16e42",
+    "reference_source_audit.csv": "8266ad04c8afabde17915603624420bc5497bf0b488d997ffe70449559bb68e5",
+    "excluded_records.csv": "7f841d86617ba78032b0a35d5e5b293fa11059c68d06871cdaae0bb6ce36f045",
+    "model_evaluation_results.csv": "e9f651144526e14e134dd0b5b279dbfc6eb361aaa1d943b1396cb04a750c36c6",
+    "benchmark_integrity_checks.json": "dfc1ca8e5f4f5ead3335bf35d728fb95b00a75508b7714f2414c7679f1ac480f"
+  }
+}

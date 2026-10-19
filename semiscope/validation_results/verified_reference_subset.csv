@@ -1,0 +1,21 @@
+record_id,formula,common_name,phase,temperature_K,gap_type,bandgap_eV,original_evidence_quality,audited_evidence_quality,audit_classification_notes
+1,Si,Silicon,diamond cubic (Fd-3m),300,indirect,1.12,verified_primary,verified_primary,Verified bibliographic DOI and experimental measurement.
+2,Ge,Germanium,diamond cubic (Fd-3m),300,indirect,0.66,verified_primary,verified_primary,Verified bibliographic DOI and experimental measurement.
+3,GaAs,Gallium Arsenide,zincblende (F-43m),300,direct,1.42,verified_primary,verified_primary,Verified bibliographic DOI and experimental measurement.
+4,InP,Indium Phosphide,zincblende (F-43m),300,direct,1.34,verified_primary,verified_primary,Verified bibliographic DOI and experimental measurement.
+5,CdTe,Cadmium Telluride,zincblende (F-43m),300,direct,1.5,verified_primary,verified_secondary,Broken DOI; value matches Landolt-Bornstein / EMIS secondary compilation.
+6,GaN,Gallium Nitride,wurtzite (P6_3mc),300,direct,3.4,verified_primary,verified_primary,Verified bibliographic DOI and experimental measurement.
+7,ZnO,Zinc Oxide,wurtzite (P6_3mc),300,direct,3.37,verified_primary,verified_primary,Verified bibliographic DOI and experimental measurement.
+8,TiO2,Titanium Dioxide (Rutile),rutile (P4_2/mnm),300,direct,3.03,verified_primary,verified_primary,Verified bibliographic DOI and experimental measurement.
+9,TiO2,Titanium Dioxide (Anatase),anatase (I4_1/amd),300,indirect,3.2,verified_secondary,verified_secondary,Verified bibliographic DOI and experimental measurement.
+10,In5CuS8,Copper Pentaindium Octasulfide (CuIn5S8),spinel cubic (Fd-3m),300,direct,1.34,verified_primary,provisional,Broken Elsevier DOI; unverified primary record in automated check.
+11,Cs3Bi2Br9,Cesium Bismuth Bromide,trigonal (P-3m1),300,direct,2.5,verified_primary,provisional,"Mismatched DOI (resolves to BiVO4 photocatalysis, Lardhi et al.); unverified primary paper for this bromide."
+12,In0.6Ga0.4As0.6P0.4,Indium Gallium Arsenide Phosphide Quaternary,zincblende alloy (F-43m),300,direct,1.25,verified_primary,provisional,Mismatched DOI (resolves to Constable IEE Review); alloy bowing interpolation; unverified primary measurement.
+13,AlN,Aluminium Nitride,wurtzite (P6_3mc),300,direct,6.2,verified_primary,verified_primary,Verified bibliographic DOI and experimental measurement.
+14,Ga2O3,Gallium Oxide (beta),monoclinic (C2/m),300,direct,4.85,verified_primary,verified_primary,Verified bibliographic DOI and experimental measurement.
+15,SiC,Silicon Carbide (4H),"hexagonal (P6_3mc, 4H polytype)",300,indirect,3.26,verified_primary,verified_secondary,Broken Springer DOI; value matches secondary handbook compilation (Goldberg et al.).
+16,ZnS,Zinc Sulfide (Sphalerite),zincblende (F-43m),300,direct,3.68,verified_secondary,verified_secondary,Broken PhysRev DOI; value matches CRC Handbook secondary compilation.
+17,CdS,Cadmium Sulfide (Wurtzite),wurtzite (P6_3mc),300,direct,2.42,verified_primary,verified_primary,Verified bibliographic DOI and experimental measurement.
+18,In2O3,Indium Oxide (Bixbyite),cubic bixbyite (Ia-3),300,direct,2.93,unresolved,unresolved,Verified bibliographic DOI and experimental measurement.
+19,Cs2AgBiBr6,Cesium Silver Bismuth Bromide Double Perovskite,cubic (Fm-3m),300,indirect,2.05,verified_primary,verified_primary,Verified bibliographic DOI and experimental measurement.
+20,Bi2O3,Bismuth Trioxide (alpha),monoclinic alpha (P2_1/c),300,direct,2.85,provisional,provisional,Verified bibliographic DOI and experimental measurement.

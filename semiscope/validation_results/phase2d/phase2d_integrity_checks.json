@@ -1,0 +1,63 @@
+{
+  "audit_phase": "Phase 2D: Independent Benchmark Source Audit",
+  "audit_timestamp": "2026-10-19T11:10:00Z",
+  "production_freeze_verified": true,
+  "phase2c_sha256_reconciliation": {
+    "actual_physical_sha256": "b404a4c5861fe4e4b810e7b3bddc24765d6655bc65ca0e9a906b82f599b16e42",
+    "phase2c_manifest_sha256": "b404a4c5861fe4e4b810e7b3bddc24765d6655bc65ca0e9a906b82f599b16e42",
+    "phase2c_report_narrative_sha256": "3a4f6bb8fbc923a1050e64f89d977e2ffb234479599ea78f8cb339c908581895",
+    "reconciliation_status": "DISCREPANCY_EXPLAINED",
+    "explanation": "The physical reference_benchmark.csv strictly matches the Phase 2C benchmark_manifest.json (b404a4c5...). The hash printed in Phase 2C curation_report.md (3a4f6bb8...) was an earlier draft checkpoint from pre-final formatting and was not synchronized prior to freeze."
+  },
+  "record_counts": {
+    "total_audited_records": 66,
+    "phase2c_candidate_records": 54,
+    "phase2c_originally_excluded": 12,
+    "phase2d_downgraded_from_benchmark": 15,
+    "phase2d_eligible_benchmark_records": 39,
+    "shortfall_relative_to_50_target": 11,
+    "tier_breakdown_total_66": {
+      "verified_primary": 32,
+      "verified_secondary": 7,
+      "provisional": 16,
+      "unresolved": 11
+    },
+    "retained_eligible_tier_breakdown_n39": {
+      "verified_primary": 32,
+      "verified_secondary": 7,
+      "provisional": 0,
+      "unresolved": 0
+    }
+  },
+  "eligible_benchmark_recomputed_metrics": {
+    "overall_metrics_n39": {
+      "sample_size": 39,
+      "mae_eV": 0.7799,
+      "rmse_eV": 1.0076,
+      "mean_signed_error_eV": -0.5209,
+      "median_absolute_error_eV": 0.597
+    },
+    "in_domain_multielement_metrics_n36": {
+      "sample_size": 36,
+      "mae_eV": 0.7288,
+      "rmse_eV": 0.9683,
+      "mean_signed_error_eV": -0.5954,
+      "median_absolute_error_eV": 0.542
+    },
+    "elemental_challenge_metrics_n3": {
+      "sample_size": 3,
+      "mae_eV": 1.3923,
+      "rmse_eV": 1.3957,
+      "mean_signed_error_eV": 0.3737,
+      "median_absolute_error_eV": 1.353
+    }
+  },
+  "file_hashes_sha256": {
+    "validation_results/phase2d/corrected_benchmark.csv": "3374d6f2767ee01f755878d7948bfcc9d91a162e07bb377afdc7aaacb935ede4",
+    "validation_results/phase2d/excluded_or_downgraded_records.csv": "a66ea46ba79272dbbe5630fec58888b9be663fc3f6d18e29818650f86901496f",
+    "validation_results/phase2d/source_verification_matrix.csv": "dd681c05677a6c4405d4aca6e8edd51060c3c6ba3fd73f136c5a2ca1b519b921",
+    "validation_results/phase2c/reference_benchmark.csv": "b404a4c5861fe4e4b810e7b3bddc24765d6655bc65ca0e9a906b82f599b16e42"
+  },
+  "recommendation_decision": "READY_FOR_EXTERNAL_DIAGNOSTIC",
+  "readiness_verdict_rationale": "Strict independent source audit reduced eligible benchmark to 39 verified records (shortfall of 11 against the 50-record target). Production model development/retraining decisions must not be taken until >= 50 verified primary/secondary records are reached. However, the 39 verified records provide an immaculate, audited testbed suitable for external diagnostic assessment."
+}

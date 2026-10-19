@@ -1,0 +1,93 @@
+{
+  "audit_metadata": {
+    "audit_phase": "Phase 2B: Validation Integrity Audit",
+    "audit_date": "2026-10-19",
+    "auditor": "Antigravity AI Systems Auditor",
+    "python_version": "3.13.0",
+    "sklearn_runtime_version": "1.9.0"
+  },
+  "dataset_discrepancy_audit": {
+    "candidate_dataset_provided_by_prompt": "semiscope_reference_bandgaps_expanded.csv",
+    "candidate_dataset_actual_row_count": 20,
+    "report_markdown_hallucination": "Markdown report table contained a detached legacy 20-row table with PbS, GaP, ZnSe, PbTe while actual CSV evaluated In5CuS8, Cs3Bi2Br9, In0.6Ga0.4As0.6P0.4, etc."
+  },
+  "evidence_audit_summary": {
+    "total_evaluated_records": 20,
+    "verified_primary_count": 11,
+    "verified_secondary_count": 4,
+    "provisional_count": 4,
+    "unresolved_excluded_count": 1,
+    "downgraded_records": [
+      "CdTe",
+      "In5CuS8",
+      "Cs3Bi2Br9",
+      "In0.6Ga0.4As0.6P0.4",
+      "SiC",
+      "ZnS"
+    ]
+  },
+  "original_reported_metrics_check": {
+    "evaluated_dataset": "external_validation_results.csv (all 19 eligible including provisional)",
+    "agreement_with_json_and_eval_csv": true,
+    "overall_eligible_n19": {
+      "mae": 0.8175,
+      "rmse": 1.0504,
+      "bias": -0.4797,
+      "median_ae": 0.766
+    },
+    "in_domain_multielement_n17": {
+      "mae": 0.7578,
+      "rmse": 1.0132,
+      "bias": -0.6919,
+      "median_ae": 0.558
+    },
+    "out_of_domain_elemental_n2": {
+      "mae": 1.3245,
+      "rmse": 1.3247,
+      "bias": 1.3245,
+      "median_ae": 1.3245
+    }
+  },
+  "corrected_strictly_verified_metrics": {
+    "definition": "Eligible records strictly classified as verified_primary or verified_secondary (excluding provisional and unresolved)",
+    "strictly_verified_overall_n15": {
+      "mae": 0.948,
+      "rmse": 1.157,
+      "bias": -0.5625,
+      "median_ae": 0.979
+    },
+    "strictly_verified_in_domain_n13": {
+      "mae": 0.8901,
+      "rmse": 1.129,
+      "bias": -0.8528,
+      "median_ae": 0.766
+    },
+    "strictly_verified_elemental_ood_n2": {
+      "mae": 1.3245,
+      "rmse": 1.3247,
+      "bias": 1.3245,
+      "median_ae": 1.3245
+    }
+  },
+  "subgroup_range_investigation": {
+    "claimed_range": "0.3 to 3.0 eV with claimed MAE of ~0.4 to 0.6 eV",
+    "actual_subgroup_in_domain_0_3_to_3_0_eV": {
+      "count": 9,
+      "formulas": [
+        "GaAs",
+        "InP",
+        "CdTe",
+        "In5CuS8",
+        "Cs3Bi2Br9",
+        "In0.6Ga0.4As0.6P0.4",
+        "CdS",
+        "Cs2AgBiBr6",
+        "Bi2O3"
+      ],
+      "mae": 0.282,
+      "rmse": 0.386,
+      "median_ae": 0.145,
+      "statistical_warning": "Sample size n=9 is severely underpowered and contains 4 provisional records. Generalizing a reliable 0.4-0.6 eV MAE claim from n=9 without cross-validation or conformal coverage is statistically invalid."
+    }
+  }
+}
