@@ -24,8 +24,8 @@ from src.typography import format_formula_html
 
 # Page setup
 st.set_page_config(
-    page_title="SemiScope | Explainable Materials Discovery",
-    page_icon="🔬",
+    page_title="SemiScope | Computational Materials Screening",
+    page_icon="S",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -33,240 +33,150 @@ st.set_page_config(
 # Custom CSS for high-end aesthetic
 st.markdown("""
 <style>
-    /* Professional Scientific Theme - Clean Off-White with Navy & Muted Teal */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-    
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap');
+
     html, body, [class*="css"] {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        color: #0f172a;
-    }
-    
-    code, pre, .mono {
-        font-family: 'JetBrains Mono', monospace !important;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+        color: #172B3A !important;
     }
 
-    /* App container styling */
     .stApp {
-        background-color: #f8fafc;
-        color: #0f172a;
+        background-color: #F7F8F6 !important;
     }
 
-    /* Header styling - Compact, restrained, clear */
-    .header-container {
-        background-color: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        padding: 1.25rem 1.5rem;
-        margin-bottom: 1.25rem;
-    }
-    
-    .header-title {
-        font-size: 1.6rem;
-        font-weight: 700;
-        color: #0f172a;
-        margin: 0;
+    /* Typography Specifications */
+    .app-header-title {
+        font-size: 30px !important;
+        font-weight: 650 !important;
+        color: #172B3A !important;
         letter-spacing: -0.02em;
-    }
-    
-    .header-subtitle {
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: #0f766e;
-        margin: 0.15rem 0 0.35rem 0;
-    }
-    
-    .header-desc {
-        font-size: 0.88rem;
-        color: #475569;
-        margin: 0;
-        line-height: 1.5;
+        margin: 0 0 2px 0;
+        line-height: 1.2;
     }
 
-    .meta-tag {
-        display: inline-block;
-        padding: 0.2rem 0.55rem;
-        border-radius: 4px;
-        font-size: 0.75rem;
-        font-weight: 500;
-        background-color: #f1f5f9;
-        color: #334155;
-        border: 1px solid #cbd5e1;
-        margin-right: 0.4rem;
-        margin-top: 0.5rem;
+    .app-header-tagline {
+        font-size: 15px !important;
+        font-style: italic;
+        color: #287D78 !important;
+        margin: 0 0 4px 0;
     }
 
-    /* Professional clean content cards */
-    .card {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        padding: 1.2rem;
-        margin-bottom: 1rem;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    .app-header-sub {
+        font-size: 14px !important;
+        color: #71808A !important;
+        margin: 0 0 12px 0;
+        line-height: 1.4;
     }
 
-    .app-matrix-card {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        padding: 1.2rem;
-        margin-bottom: 1rem;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-    }
-
-    .app-title {
-        font-size: 1.05rem;
-        font-weight: 600;
-        color: #0f172a;
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-    }
-
-    .app-subtitle {
-        font-size: 0.82rem;
-        color: #64748b;
-        margin-top: 0.15rem;
-    }
-
-    /* Tags & Badges - Restrained and scientifically credible */
-    .tag-measured {
-        background: #f0fdf4;
-        color: #166534;
-        padding: 2px 8px;
-        border-radius: 4px;
-        font-size: 0.72rem;
-        font-weight: 600;
-        border: 1px solid #bbf7d0;
-        display: inline-block;
-    }
-    
-    .tag-predicted {
-        background: #f8fafc;
-        color: #334155;
-        padding: 2px 8px;
-        border-radius: 4px;
-        font-size: 0.72rem;
-        font-weight: 600;
-        border: 1px solid #cbd5e1;
-        display: inline-block;
-    }
-
-    .tag-xgboost {
-        background: #f0fdfa;
-        color: #0f766e;
-        padding: 2px 8px;
-        border-radius: 4px;
-        font-size: 0.72rem;
-        font-weight: 600;
-        border: 1px solid #99f6e4;
-        display: inline-block;
-    }
-
-    .evidence-strong {
-        background: #f8fafc;
-        color: #1e293b;
-        padding: 2px 7px;
-        border-radius: 4px;
-        font-size: 0.72rem;
-        font-weight: 600;
-        border: 1px solid #cbd5e1;
-    }
-
-    .evidence-heuristic {
-        background: #fffbeb;
-        color: #92400e;
-        padding: 2px 7px;
-        border-radius: 4px;
-        font-size: 0.72rem;
-        font-weight: 600;
-        border: 1px solid #fde68a;
-    }
-
-    .evidence-weak {
-        background: #f8fafc;
-        color: #64748b;
-        padding: 2px 7px;
-        border-radius: 4px;
-        font-size: 0.72rem;
-        font-weight: 600;
-        border: 1px solid #e2e8f0;
-    }
-
-    .badge-tied {
-        background: #fffbeb;
-        color: #92400e;
-        border: 1px solid #fde68a;
-        padding: 2px 7px;
-        border-radius: 4px;
-        font-size: 0.72rem;
-        font-weight: 600;
-        margin-left: 0.4rem;
-    }
-
-    .badge-unique {
-        background: #f0fdf4;
-        color: #166534;
-        border: 1px solid #bbf7d0;
-        padding: 2px 7px;
-        border-radius: 4px;
-        font-size: 0.72rem;
-        font-weight: 600;
-        margin-left: 0.4rem;
-    }
-
-    /* Model score boxes */
-    .model-score-box {
-        background: #f8fafc;
-        border-radius: 6px;
-        padding: 0.8rem 1rem;
-        border: 1px solid #e2e8f0;
-    }
-
-    .model-score-box.rf {
-        border-left: 3px solid #334155;
-    }
-
-    .model-score-box.xgb {
-        border-left: 3px solid #0f766e;
-    }
-
-    /* Explanation callouts */
-    .expl-box {
-        background: #f8fafc;
-        border-radius: 6px;
-        padding: 0.85rem 1rem;
-        border-left: 3px solid #334155;
-        font-size: 0.88rem;
-        line-height: 1.55;
-        color: #334155;
-        margin-top: 0.75rem;
-    }
-
-    .expl-box-xgb {
-        background: #f0fdfa;
-        border-radius: 6px;
-        padding: 0.85rem 1rem;
-        border-left: 3px solid #0f766e;
-        font-size: 0.88rem;
-        line-height: 1.55;
-        color: #115e59;
-        margin-top: 0.75rem;
-    }
-
-    /* Primary button prominence */
-    .stButton > button {
-        background-color: #0f766e !important;
-        color: #ffffff !important;
+    .section-title {
+        font-size: 21px !important;
         font-weight: 600 !important;
+        color: #172B3A !important;
+        margin: 16px 0 8px 0;
+    }
+
+    .card-title {
+        font-size: 15px !important;
+        font-weight: 600 !important;
+        color: #172B3A !important;
+    }
+
+    .body-text {
+        font-size: 14px !important;
+        font-weight: 400 !important;
+        color: #172B3A !important;
+    }
+
+    .caption-text {
+        font-size: 12px !important;
+        font-weight: 400 !important;
+        color: #71808A !important;
+    }
+
+    .metric-value-large {
+        font-size: 30px !important;
+        font-weight: 600 !important;
+        color: #172B3A !important;
+        line-height: 1.1;
+    }
+
+    /* Clean Surface Containers */
+    .clean-surface {
+        background: #FFFFFF;
+        border: 1px solid #E1E6E4;
+        border-radius: 6px;
+        padding: 14px 18px;
+        margin-bottom: 12px;
+    }
+
+    .workflow-card {
+        background: #FFFFFF;
+        border: 1px solid #E1E6E4;
+        border-radius: 6px;
+        padding: 16px;
+        height: 100%;
+    }
+
+    /* Badges & Tags */
+    .badge-ref {
+        background: #F0FDF4;
+        color: #166534;
+        padding: 2px 7px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 500;
+        border: 1px solid #DCFCE7;
+        display: inline-block;
+    }
+
+    .badge-pred {
+        background: #F7F8F6;
+        color: #172B3A;
+        padding: 2px 7px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 500;
+        border: 1px solid #E1E6E4;
+        display: inline-block;
+    }
+
+    .badge-xgb {
+        background: #F0FDFA;
+        color: #0F766E;
+        padding: 2px 7px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 500;
+        border: 1px solid #CCFBF1;
+        display: inline-block;
+    }
+
+    /* Callout & Explanation boxes */
+    .info-callout {
+        background: #FFFFFF;
+        border: 1px solid #E1E6E4;
+        border-left: 3px solid #287D78;
+        border-radius: 4px;
+        padding: 10px 14px;
+        font-size: 13px;
+        line-height: 1.5;
+        color: #172B3A;
+        margin-top: 8px;
+    }
+
+    /* Streamlit Button Restyling */
+    .stButton > button {
+        background-color: #287D78 !important;
+        color: #FFFFFF !important;
+        font-weight: 600 !important;
+        font-size: 14px !important;
         border: none !important;
-        border-radius: 6px !important;
-        padding: 0.5rem 1.25rem !important;
-        transition: background-color 0.15s ease !important;
+        border-radius: 4px !important;
+        padding: 6px 16px !important;
     }
 
     .stButton > button:hover {
-        background-color: #115e59 !important;
+        background-color: #20635F !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -274,23 +184,28 @@ st.markdown("""
 
 # Header Section
 st.markdown("""
-<div class="main-header">
-    <h1>SemiScope</h1>
-    <p>Explainable Semiconductor Materials Discovery & Band-Gap Screening Engine. Powered by the verified 4,604-record experimental Band-Gap Benchmark and Candidate Catalog, 132 Magpie elemental descriptors, and grouped-CV Random Forest ensembles.</p>
-    <div>
-        <span class="stat-badge">Primary Catalog: 4,604-Record Band-Gap Benchmark & Candidate Catalog</span>
-        <span class="stat-badge">Features: 132 Magpie Elemental Descriptors</span>
-        <span class="stat-badge">Validation: Grouped-CV Leakage-Free Splitting</span>
-    </div>
+<div class="clean-surface" style="margin-bottom: 12px;">
+    <div class="app-header-title">SemiScope</div>
+    <div class="app-header-tagline">Semiconductor discovery, powered by materials intelligence.</div>
+    <div class="app-header-sub">Screen known materials or predict band gaps for new compositions.</div>
 </div>
 """, unsafe_allow_html=True)
 
+with st.expander("About the model & methodology"):
+    st.markdown("""
+    SemiScope integrates a canonical **4,604-record experimental band-gap benchmark** with composition-based machine learning.
+    
+    - **Features**: 132 Magpie elemental physical and electronic descriptors derived strictly from chemical stoichiometry.
+    - **Production Model**: 100-tree Random Forest regressor trained with grouped-CV leakage-free composition splitting.
+    - **Auxiliary Benchmark Booster**: 5-fold cross-validated XGBoost gradient-boosted ensemble.
+    - **Scope & Limitations**: Band-gap suitability reflects electronic window alignment only (e.g. AM1.5 solar spectrum absorption, logic switching off-state current leakage, or radiative photon emission). It does not evaluate carrier mobilities, dopability, dielectric breakdown, or thermal stability. Uncalibrated ensemble tree spread indicates model dispersion, not a formal confidence interval.
+    """)
 # Navigation / Mode Toggle
 mode = st.radio(
-    "Select Semiconductor Discovery Workflow:",
+    "Select Workflow:",
     [
-        "Mode 1: Application → Device/Role → Component → Ranked Candidates (From Verified Experimental Catalog)",
-        "Mode 2: Material Characterization (Arbitrary Formula / CIF → Model Predicted & Scored Suitability)"
+        "Catalog Screening (Rank verified experimental materials by application)",
+        "AI Prediction (Predict band gap and explain features for any composition)"
     ],
     horizontal=True
 )
@@ -300,12 +215,9 @@ st.markdown("---")
 # ==============================================================================
 # MODE 1: APPLICATION -> DEVICE/ROLE -> COMPONENT -> RANKED CANDIDATES
 # ==============================================================================
-if "Mode 1" in mode:
-    st.subheader("Mode 1: Screen Candidate Materials by Application & Role")
-    st.caption("Search and rank across the canonical 4,604-record experimental Band-Gap Benchmark and Candidate Catalog. Rankings in Mode 1 are derived directly from verified experimental band-gap measurements.")
-
-    # Mode 1 banner clarifying experimental provenance and scope
-    st.info("💡 **Mode 1 Overview:** Evaluates known materials in the benchmark catalog against application desirability curves using **verified experimental band-gap measurements**. A favorable band-gap score identifies candidate materials for further investigation, but **does not alone establish device performance, carrier mobility, lifetime, dopability, or device efficiency**.")
+if "Catalog" in mode:
+    st.markdown('<div class="section-title">Catalog Screening</div>', unsafe_allow_html=True)
+    st.caption("Screen known materials from the 4,604-record verified benchmark by application suitability.")
 
     # Application Hierarchy mapping
     HIERARCHY = {
@@ -369,7 +281,7 @@ if "Mode 1" in mode:
             <strong>Target Window:</strong> {h_info['target_window']} &nbsp;|&nbsp; Evidence Level: <strong>{uc_info.evidence_level}</strong>
         </div>
         <div style="font-size: 0.8rem; color: #991b1b; margin-top: 0.3rem;">
-            ⚠️ <em>Scope Boundary: {h_info['limitations']}</em>
+            <em>Scope Boundary: {h_info['limitations']}</em>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -471,7 +383,7 @@ if "Mode 1" in mode:
             <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.6rem 0.9rem; margin-top: 0.6rem; font-size: 0.8rem;">
                 <div style="font-weight: 600; color: #334155; margin-bottom: 0.2rem;">Scientific Evidence & Data Coverage:</div>
                 <div style="color: #475569;">
-                    ✅ <strong>Band-Gap Energy:</strong> {provenance_label} ({bg_val:.2f} eV)
+                    <strong>Band-Gap Energy:</strong> {provenance_label} ({bg_val:.2f} eV)
                 </div>
             </div>
             """, unsafe_allow_html=True)
@@ -479,12 +391,12 @@ if "Mode 1" in mode:
             # Scope boundary alert for each candidate
             st.markdown(f"""
             <div style="background: #fffbeb; border: 1px solid #fef3c7; border-radius: 6px; padding: 0.5rem 0.8rem; margin-top: 0.5rem; font-size: 0.78rem; color: #92400e;">
-                ⚠️ <strong>Band-Gap Scope Boundary:</strong> Band-gap-aligned candidate. Overall device suitability has not been established because additional material and device properties (mobility, recombination lifetime, dopability, and thermal conductivity) have not been evaluated.
+                <strong>Band-Gap Scope Boundary:</strong> Band-gap-aligned candidate. Overall device suitability has not been established because additional material and device properties (mobility, recombination lifetime, dopability, and thermal conductivity) have not been evaluated.
             </div>
             """, unsafe_allow_html=True)
 
             # On-demand explanation toggle
-            with st.expander("ℹ️ Mechanistic Explanation & Scope Limitations"):
+            with st.expander("Mechanistic Explanation & Limitations"):
                 s_dict = score_material_for_usecase(cand["formula"], uc_info)
                 expl = synthesize_explanation(s_dict)
                 st.write(expl)
@@ -500,7 +412,7 @@ else:
     st.caption("Input an arbitrary chemical composition or CIF file to generate on-the-fly 132-feature Random Forest band-gap predictions, tree dispersion spreads, and SHAP physical drivers.")
 
     # Mode 2 banner clarifying predictive nature and scientific boundaries
-    st.info(r"🔬 **Mode 2 Overview:** Generates **model predictions on arbitrary formulas** using the 132-feature Random Forest regressor. The 4,604-record benchmark catalog consists of **multielement compounds**; single-element systems (e.g. Si, Ge) are out-of-domain and trigger uncertainty warnings. Uncertainty is reported as **uncalibrated ensemble tree dispersion** ($\pm \sigma_{\\text{trees}}$), not a confidence interval. A predicted band gap within a target window indicates band alignment feasibility only; **it does not establish carrier mobility, dopability, recombination lifetime, or device efficiency**.")
+    st.info(r"**Mode 2 Overview:** Generates **model predictions on arbitrary formulas** using the 132-feature Random Forest regressor. The 4,604-record benchmark catalog consists of **multielement compounds**; single-element systems (e.g. Si, Ge) are out-of-domain and trigger uncertainty warnings. Uncertainty is reported as **uncalibrated ensemble tree dispersion** ($\pm \sigma_{\\text{trees}}$), not a confidence interval. A predicted band gap within a target window indicates band alignment feasibility only; **it does not establish carrier mobility, dopability, recombination lifetime, or device efficiency**.")
 
     col1, col2 = st.columns([1, 2])
 
@@ -579,7 +491,7 @@ else:
                 st.caption(f"✓ Selected from verified catalog: **{formula_input}** ({selected_option.split('—')[-1].strip() if '—' in selected_option else ''})")
             else:
                 formula_input = str(selected_option).split("—")[0].split("[")[0].strip()
-                st.caption(f"⚡ Custom formula entered: **{formula_input}** (will be characterized on-the-fly via 132 Magpie descriptors)")
+                st.caption(f"Custom formula entered: **{formula_input}** (will be characterized on-the-fly via 132 Magpie descriptors)")
 
             # Preset semiconductor quick buttons
             st.markdown("<small>Quick Presets:</small>", unsafe_allow_html=True)
@@ -602,12 +514,12 @@ else:
 
         st.markdown("---")
         enable_xgboost = st.toggle(
-            "⚡ Parallel XGBoost Analysis",
+            "Parallel XGBoost Analysis",
             value=True,
             help="Toggle to run the auxiliary 5-fold XGBoost model side-by-side with the production Random Forest."
         )
 
-        run_btn = st.button("Evaluate Semiconductor Suitability", type="primary", use_container_width=True)
+        run_btn = st.button("Run Analysis", type="primary", use_container_width=True)
 
     with col2:
         if run_btn:
@@ -624,7 +536,7 @@ else:
                         import traceback
                         tb_str = traceback.format_exc()
                         st.error(f"Analysis failed: {e}")
-                        with st.expander("🔍 Diagnostic Details / Traceback"):
+                        with st.expander("Diagnostic Details"):
                             st.code(tb_str, language="text")
                         ranked_results = []
 
@@ -780,9 +692,9 @@ else:
                                 expl_neg = f"moderated downward by **{', '.join(top_neg)}**" if top_neg else ""
                                 full_diag_expl = f"**XGBoost Model Explanation:** For **{canon_form}**, the gradient boosted ensemble predicts **{xgb_mean:.2f} eV** (ensemble standard deviation ±{xgb_std:.2f} eV across 5 folds). The primary physical drivers pushing the gap higher are {expl_pos}{' and ' if expl_pos and expl_neg else ''}{expl_neg}. In contrast to the Random Forest's {rf_pred_val:.2f} eV prediction, XGBoost minimizes tail truncation, yielding closer tracking to verified experimental bounds."
 
-                                st.info(f"💡 {full_diag_expl}")
+                                st.info(f"{full_diag_expl}")
 
-                                with st.expander("🔬 View Detailed XGBoost SHAP Descriptor Table"):
+                                with st.expander("View XGBoost SHAP Table"):
                                     st.dataframe(pd.DataFrame(xgb_drivers), use_container_width=True, hide_index=True)
 
                             except Exception as xgb_err:
@@ -796,7 +708,7 @@ else:
                         <div style="display: flex; justify-content: space-between; align-items: flex-end;">
                             <div>
                                 <h3 style="margin: 0; font-size: 1.4rem; font-weight: 700; color: #f8fafc; letter-spacing: -0.02em;">
-                                    🎯 Material Usability Matrix: Solar • Semiconductor • Opto/Quantum
+                                    Application Suitability: Solar • Semiconductor • Optoelectronics
                                 </h3>
                                 <p style="margin: 0.3rem 0 0 0; font-size: 0.88rem; color: #94a3b8;">
                                     Comparative suitability scoring and physical mechanics evaluated concurrently under Random Forest and 5-fold XGBoost ensembles.
@@ -823,7 +735,7 @@ else:
                             "id": "solar",
                             "name": "Solar Photovoltaics (Absorber)",
                             "domain": "Energy & Clean Tech",
-                            "icon": "☀️",
+                            "icon": "",
                             "opt_eg": 1.34,
                             "window": "1.10 – 1.50 eV (Shockley-Queisser Limit)",
                             "band_desc": "AM1.5 Solar Absorption Window",
@@ -834,7 +746,7 @@ else:
                             "id": "semiconductor",
                             "name": "Semiconductor Electronic Switching",
                             "domain": "Logic & Power Electronics",
-                            "icon": "⚡",
+                            "icon": "",
                             "opt_eg": 1.25,
                             "window": "0.20 – 2.80 eV (FET / Power Switching)",
                             "band_desc": "Room-Temperature Thermal Leakage / Ionization Window",
@@ -845,7 +757,7 @@ else:
                             "id": "led",
                             "name": "Quantum Emitters & Optoelectronics / LED",
                             "domain": "Photonics & Quantum Wells",
-                            "icon": "💡",
+                            "icon": "",
                             "opt_eg": 2.50,
                             "window": "2.00 – 3.50 eV (Visible / Near-UV Emission)",
                             "band_desc": "Direct Radiative Recombination & Exciton Binding",
@@ -1069,17 +981,17 @@ Target Optimum: <strong>{app['opt_eg']} eV</strong> • Active Window: {app['win
 </div>
 </div>
 <div class="expl-box-xgb">
-<strong>🔬 XGBoost Usability Analysis:</strong> {xgb_app_mechanics}
+<strong>XGBoost Analysis:</strong> {xgb_app_mechanics}
 </div>
 <div style="font-size: 0.76rem; color: #94a3b8; margin-top: 0.6rem; font-style: italic;">
-ℹ️ Scope Boundary: {app['caveat']}
+Scope boundary: {app['caveat']}
 </div>
 </div>"""
                         with st.container():
                             st.markdown(card_html, unsafe_allow_html=True)
 
                     # Expandable SHAP Feature Attribution Table for Deeper Inspection
-                    with st.expander("🔬 View Primary SHAP Feature Importance Drivers (Model Interpretability)"):
+                    with st.expander("Why did the model predict this? (SHAP Feature Attribution)"):
                         try:
                             exp = explain_prediction(canon_form, "bandgap", top_k=6)
                             drivers_df = pd.DataFrame(exp["drivers"])
