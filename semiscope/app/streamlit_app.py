@@ -501,7 +501,7 @@ else:
     st.caption("Input an arbitrary chemical composition or CIF file to generate on-the-fly 132-feature Random Forest band-gap predictions, tree dispersion spreads, and SHAP physical drivers.")
 
     # Mode 2 banner clarifying predictive nature and scientific boundaries
-    st.info("🔬 **Mode 2 Overview:** Generates **model predictions on arbitrary formulas** using the 132-feature Random Forest regressor. The 4,604-record benchmark catalog consists of **multielement compounds**; single-element systems (e.g. Si, Ge) are out-of-domain and trigger uncertainty warnings. Uncertainty is reported as **uncalibrated ensemble tree dispersion** ($\pm \sigma_{\\text{trees}}$), not a confidence interval. A predicted band gap within a target window indicates band alignment feasibility only; **it does not establish carrier mobility, dopability, recombination lifetime, or device efficiency**.")
+    st.info(r"🔬 **Mode 2 Overview:** Generates **model predictions on arbitrary formulas** using the 132-feature Random Forest regressor. The 4,604-record benchmark catalog consists of **multielement compounds**; single-element systems (e.g. Si, Ge) are out-of-domain and trigger uncertainty warnings. Uncertainty is reported as **uncalibrated ensemble tree dispersion** ($\pm \sigma_{\\text{trees}}$), not a confidence interval. A predicted band gap within a target window indicates band alignment feasibility only; **it does not establish carrier mobility, dopability, recombination lifetime, or device efficiency**.")
 
     col1, col2 = st.columns([1, 2])
 
